@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 const hbs = require('hbs');
 var app = express();
@@ -13,7 +14,6 @@ app.use((req ,res, next)=>{
   console.log(log);
   fs.appendFile('server.log',log+'');
   next();
-
 });
 
 // app.use((req, res ,next)=>{
@@ -48,7 +48,11 @@ app.get('/bad', (req, res) => {
     errorMessage: 'Unable to handle request'
   });
 });
-
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on the port ${port}`);
 });
+
+
+
+
+
